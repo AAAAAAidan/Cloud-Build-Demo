@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# [START cloudrun_helloworld_dockerfile]
-# [START run_helloworld_dockerfile]
+# [START cloudrun_demo_dockerfile]
+# [START run_demo_dockerfile]
 
 # Use the official maven/Java 8 image to create a build artifact.
 # https://hub.docker.com/_/maven
@@ -34,10 +34,10 @@ RUN mvn package -DskipTests
 FROM adoptopenjdk/openjdk11:alpine-jre
 
 # Copy the jar to the production image from the builder stage.
-COPY --from=builder /app/target/helloworld-*.jar /helloworld.jar
+COPY --from=builder /app/target/demo-*.jar /demo.jar
 
 # Run the web service on container startup.
-CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/helloworld.jar"]
+CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/demo.jar"]
 
-# [END run_helloworld_dockerfile]
-# [END cloudrun_helloworld_dockerfile]
+# [END run_demo_dockerfile]
+# [END cloudrun_demo_dockerfile]
