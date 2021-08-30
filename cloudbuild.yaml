@@ -1,4 +1,8 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy']
-  dir: "target"
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/demo/springboot', '.' ]
+  # push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/demo/springboot']
+images:
+  - 'gcr.io/demo/springboot'
