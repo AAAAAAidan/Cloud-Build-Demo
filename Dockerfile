@@ -17,7 +17,7 @@ RUN mvn package -DskipTests
 FROM adoptopenjdk/openjdk11:alpine-jre
 
 # Copy the jar to the production image from the builder stage.
-COPY --from=builder /app/target/demo-*.jar /demo.jar
+COPY --from=builder /app/target/springboot-helloworld-*.jar /springboot-helloworld.jar
 
 # Run the web service on container startup.
-CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/demo.jar"]
+CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/springboot-helloworld.jar"]
