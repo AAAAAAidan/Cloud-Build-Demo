@@ -18,40 +18,30 @@
   <artifactId>springboot-helloworld</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <!--
-  The parent pom defines common style checks and testing strategies for our samples.
-  Removing or replacing it should not affect the execution of the samples in anyway.
-  -->
   <parent>
-      <groupId>com.google.cloud.samples</groupId>
-      <artifactId>shared-configuration</artifactId>
-      <version>1.0.23</version>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.5.3</version>
+    <relativePath/>
   </parent>
 
   <properties>
-      <maven.compiler.target>11</maven.compiler.target>
-      <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
   </properties>
 
   <dependencyManagement>
-      <dependencies>
-          <dependency>
-              <!-- Import dependency management from Spring Boot -->
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-dependencies</artifactId>
-              <version>2.5.4</version>
-              <type>pom</type>
-              <scope>import</scope>
-          </dependency>
+    <dependencies>
 
-          <dependency>
-              <groupId>org.springframework.cloud</groupId>
-              <artifactId>spring-cloud-dependencies</artifactId>
-              <version>2020.0.3</version>
-              <type>pom</type>
-              <scope>import</scope>
-          </dependency>
-      </dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>2020.0.3</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+    </dependencies>
   </dependencyManagement>
 
   <dependencies>
@@ -59,25 +49,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <exclusions>
-        <!-- Exclude the Tomcat dependency -->
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jetty</artifactId>
-      <version>2.5.4</version>
     </dependency>
 
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-nio</artifactId>
-      <version>0.122.5</version>
+      <version>0.123.8</version>
     </dependency>
 
   </dependencies>
@@ -86,21 +63,9 @@
     <plugins>
 
       <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>2.5.4</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>copy-dependencies</id>
@@ -120,6 +85,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
         <configuration>
           <archive>
             <manifest>
@@ -130,16 +96,6 @@
               </mainClass>
             </manifest>
           </archive>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>com.google.cloud.tools</groupId>
-        <artifactId>appengine-maven-plugin</artifactId>
-        <version>2.4.1</version>
-        <configuration>
-          <projectId>GCLOUD_CONFIG</projectId>
-          <version>springboot-helloworld</version>
         </configuration>
       </plugin>
 
