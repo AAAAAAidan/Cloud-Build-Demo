@@ -1,3 +1,3 @@
 # Cloud Build Demo
 
-Test Spring Boot project used to set up a simple web application using Google Cloud Build. Note that cloudbuild.yaml is not yet working.
+Small Spring Boot project used to build a simple web application using Google Cloud Build. Demonstrates the use Maven and Dockerfile repackaging Java's library files with Google Cloud NIO in the build process.
